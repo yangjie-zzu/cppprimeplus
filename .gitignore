@@ -1,2 +1,4 @@
 .vocode/
 *.exe
+/code
+/nohup.out
