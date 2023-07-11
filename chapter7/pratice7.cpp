@@ -1,16 +1,16 @@
 #include <iostream>
 const int MAX = 5;
 
-int fill_array(double ar[], int limit);
-void show_array(const double ar[], int n);
-void revalue(double r, double ar[], int n);
+double * fill_array(double ar[], int limit);
+void show_array(const double ar[], double * begin, double * end);
+void revalue(double r, double ar[], double * begin, double * end);
 
 int main() {
     using namespace std;
     double properties[MAX];
-    int size = fill_array(properties, MAX);
-    show_array(properties, size);
-    if (size > 0) {
+    double * max = fill_array(properties, MAX);
+    show_array(properties, properties, max);
+    if (max > properties) {
         cout << "Enter revaluation factor: ";
         double factory;
         while (!(cin >> factory))
@@ -22,8 +22,8 @@ int main() {
             }
             cout << "Bad input; Please enter a number";
         }
-        revalue(factory, properties, size);
-        show_array(properties, size);
+        revalue(factory, properties, properties, max);
+        show_array(properties, properties, max);
         
     }
     cout << "Done.\n";
@@ -32,7 +32,7 @@ int main() {
     return 0;
 }
 
-int fill_array(double ar[], int limit) {
+double * fill_array(double ar[], int limit) {
     using namespace std;
     double temp;
     int i;
@@ -54,19 +54,19 @@ int fill_array(double ar[], int limit) {
         }
         ar[i] = temp;
     }
-    return i;
+    return ar + i;
 }
 
-void show_array(const double ar[], int n) {
+void show_array(const double ar[], double * begin, double * end) {
     using namespace std;
-    for (int i = 0; i < n; i ++) {
+    for (int i = 0; i < (end - begin); i ++) {
         cout << "Property #" << (i + 1) << ": $";
         cout << ar[i] << endl;
     }
 }
 
-void revalue(double r, double ar[], int n) {
-    for (int i = 0; i < n; i++)
+void revalue(double r, double ar[], double * begin, double * end) {
+    for (int i = 0; i < (end - begin); i++)
     {
         ar[i] *= r;
     }
