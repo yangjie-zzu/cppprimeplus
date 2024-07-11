@@ -31,7 +31,7 @@ T maxn(T * ary, int n) {
 }
 
 template <>
-char * maxn(char ** ary, int n) {
+char * maxn<char *>(char ** ary, int n) {
     char * max = ary[0];
     for (int i = 0; i < n; i++)
     {
