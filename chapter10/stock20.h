@@ -1,5 +1,5 @@
-#ifndef STOCK001_H_
-#define STOCK001_H_
+#ifndef STOCK20_H_
+#define STOCK20_H_
 #include <string>
 
 class Stock
@@ -11,10 +11,13 @@ private:
     double total_val;
     void set_tol() {total_val = shares * share_val;}
 public:
-    void acquire(const std::string & co, long n, double pr);
+    Stock();
+    Stock(const std::string & co, long n = 0, double pr = 0.0);
+    ~Stock();
     void buy(long num, double price);
     void sell(long num, double price);
     void update(double price);
-    void show();
+    void show() const;
+    const Stock & topval(const Stock & s) const;
 };
 #endif
