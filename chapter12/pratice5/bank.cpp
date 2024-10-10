@@ -22,13 +22,13 @@ int main()
     int hours;
     cin >> hours;
     long cyclelimit = MIN_PER_HR * hours;
-    double perhour = 100;
+    double perhour = 0;
     long line_wait = 0;
     long served = 0;
     do
     {
         Queue line(qs);
-        perhour --;
+        perhour ++;
         double min_per_cust = MIN_PER_HR / perhour;
         Item temp;
         long turnaways = 0;
@@ -77,7 +77,7 @@ int main()
             cout << (double)sum_line / cyclelimit << endl;
             cout << " average wait time: "
                  << (double)line_wait / served << " minutes\n";
-            if (line_wait / served < 1)
+            if (line_wait / served >= 1)
             {
                 break;
             }
@@ -87,7 +87,7 @@ int main()
         {
             cout << "No customers!\n";
         }
-    } while (perhour > 0);
+    } while (true);
     cout << "perhour: " << perhour << endl;
     cout << "Done!\n";
     return 0;
