@@ -21,7 +21,7 @@ int main() {
         cout << "headline2: " << headline2 << endl;
         cout << "Initialize an object to another:\n";
         StringBad sailor = sports;
-        cout << "sailor: " << sailor;
+        cout << "sailor: " << sailor << endl;
         cout << "Assign an object to another:\n";
         StringBad knot;
         knot = headline1;
